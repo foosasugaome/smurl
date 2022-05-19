@@ -17,7 +17,7 @@ export default function Redirect() {
                     url: `${process.env.REACT_APP_SERVER_URL}/${smurl.id}`,
                     cancelToken: new axios.CancelToken(c => (cancel = c))
                 })
-                setMessage('This might take a while. Loading....')
+                setMessage('Loading....')
                 setLoading(false)
                 window.location.href = response.data.data[0].url
             } catch (error) {
