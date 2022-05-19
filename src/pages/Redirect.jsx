@@ -1,12 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import LoadingMessages from '../components/LoadingMessages'
+import './Redirect.css'
 
 export default function Redirect() {
     const smurl = useParams()
-    const [message, setMessage] = useState('')
+    const [isError, setIsError] = useState(false)
     const [loading, setLoading] = useState(true)
 
+    document.title = 'SmURL service redirecting ...'
     useEffect(()=> {    
         (async() => {
             setLoading(true)            
@@ -16,23 +19,33 @@ export default function Redirect() {
                     method: 'GET',
                     url: `${process.env.REACT_APP_SERVER_URL}/${smurl.id}`,
                     cancelToken: new axios.CancelToken(c => (cancel = c))
-                })
-                setMessage('Loading....')
+                })                                
                 setLoading(false)
                 window.location.href = response.data.data[0].url
             } catch (error) {
                 if(axios.isCancel(error)) {
                     setLoading(false)
                 }
-                setMessage('Hmmm... Your SmURL was not found.')
+                setIsError(true)
             }
             return () => cancel()
         })()
     },[smurl.id])
   return (
     <>
-    <div className='container'>
-        <h1>{message}</h1>
+    <div className='container'>                
+        {loading
+        ?
+        <h1><LoadingMessages /></h1>
+        :
+        null
+        }
+        {isError
+        ?
+        <h1>Your SmURL was not found. Create a new one <Link to='/'>here.</Link></h1>
+        :
+        null
+        }
     </div>
     </>
     

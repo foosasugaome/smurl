@@ -5,7 +5,9 @@ export default function Footer () {
   return (
     <div className='footer'>
       <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
+      <Link to='/about'>What is SmURL? </Link>      
+      <Link to='/author'>About the author</Link>
     </div>
   )
 }
+

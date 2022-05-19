@@ -1,4 +1,7 @@
 .container {
+  height: fit-content;
+}
+.container-field {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -48,6 +51,10 @@
     border-color: #ffd270;
     font-weight: bold;
   }
+  input:invalid {
+    border: 2px solid rgb(158, 156, 156);
+  }
+
   .image-container {
     width: fit-content;
     max-width: 40vw;
