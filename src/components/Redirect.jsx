@@ -9,17 +9,7 @@ export default function Redirect() {
 
     useEffect(()=> {    
         (async() => {
-            setLoading(true)
-            // const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/${smurl.id}`)
-
-            // if(response.status === 200) {                                
-            //     setMessage('This might take a while. Loading....')
-            //     setLoading(false)
-            //     window.location.href = response.data.data[0].url
-            // } else {
-            //     setLoading(false)
-            //     setMessage('Hmmm... Your SmURL was not found.')
-            // }
+            setLoading(true)            
             let cancel 
             try {
                 const response = await axios({
