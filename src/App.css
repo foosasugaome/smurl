@@ -4,8 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-family: 'Roboto', sans-serif;  
 }
 
 /* :root {
@@ -20,7 +19,7 @@ footer {
   position: fixed;
   bottom: 0;
   height: 60px;
-  border-color: rgba(255, 255, 255, 0);
+  background-color: rgba(159, 214, 168, 1);
   z-index: 1;
   width: 100vw
 }

@@ -24,6 +24,7 @@
     height: 5rem;
     width: 8rem;
     border: 2px solid rgb(158, 156, 156);
+    font-size: 1.4rem;
     border-radius: 1rem;
     font-weight: bold;
     margin:5px;
@@ -34,7 +35,7 @@
   }
   input {
     height: 5rem;
-    width: 40rem;
+    width: 60vw;
     border: 2px solid rgb(158, 156, 156);
     border-radius: 1rem;
     font-size: 1.4rem;
