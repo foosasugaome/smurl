@@ -12,7 +12,7 @@ export default function Layout({ children }) {
         <main>
             {children}
         </main>
-        {/* <footer><Footer /></footer> */}
+        <footer><Footer /></footer>
     </>
   )
 }

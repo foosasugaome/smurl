@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import CopyURL from '../components/CopyURL'
-import About from '../components/About'
+import { motion } from 'framer-motion'
+import './Main.css'
 
 export default function Main () {
   const [form, setForm] = useState({
@@ -10,7 +11,7 @@ export default function Main () {
   const [smurl, setSmurl] = useState('')
   const [message, setMessage] = useState('')
   const [showSmurl, setShowSmurl] = useState(false)
-  const [showAbout, setShowAbout] = useState(false)
+  
   const handleSubmit = async e => {
     e.preventDefault()
     setMessage('')
@@ -21,34 +22,43 @@ export default function Main () {
       )
       const smurl = response.data
       setSmurl(`${process.env.REACT_APP_DOMAIN}/${smurl.url}`)
-      setShowSmurl(true)
+      setShowSmurl(true)      
     } catch (error) {
       setShowSmurl(false)
-      setMessage('An error occured. Please try again later.')
+      setMessage(`Oops! That's embarrasing. Something went wrong. Please try again later.`)
     }
   }
   return (
     <>
-      <div className='container-title'>
-        <h1 className='title'>Small URL</h1>
-      </div>
-      <div className='container'>
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            placeholder='Paste your long URL here'
-            value={form.url}
-            onChange={e => setForm({ ...form, url: e.target.value })}
-          />
-          <button>Send</button>
-        </form>
-        {message}
-      </div>
-      {showSmurl ? (
-        <div className='container'>
-          <CopyURL url={smurl} />
+      <motion.div
+        className='container-landing'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ type: 'spring', delay: 0, duration: 1 }}
+      >
+        <div className='container-title'>
+          <h1 className='title'>Small URL</h1>
         </div>
-      ) : null}
+        <div className='container'>
+          <form onSubmit={handleSubmit}>
+            <input
+              type='text'
+              placeholder='Paste your long URL here'
+              value={form.url}
+              onChange={e => setForm({ ...form, url: e.target.value })}
+            />
+            <button>Send</button>
+          </form>
+        </div>
+        <div className='container'>
+          <h2>{message}</h2>
+        </div>
+        {showSmurl ? (
+          <div className='container'>
+            <CopyURL url={smurl} />
+          </div>
+        ) : null}
+      </motion.div>
     </>
   )
 }
