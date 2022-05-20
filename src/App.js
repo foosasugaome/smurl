@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/:id' element={<Redirect />} />
         <Route path='/' element={<Main />} />
-        <Route path='/about' element={<About />} />        
+        <Route path='/about' element={<About />} />                
       </Routes>
     </Layout>
     </BrowserRouter>

@@ -28,3 +28,15 @@ blockquote {
     line-height: 1.8em;
     margin: 1.5em 0 1.5em 0;
 }
+
+@media only screen and (max-width: 600px) {
+    .fullscreen-container {
+        padding-bottom: 150px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0);
+}

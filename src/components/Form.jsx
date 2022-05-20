@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from 'axios'
 
 export default function Form({ form, setForm, setMessage, setLoading, setSmurl, setShowSmurl }) {
