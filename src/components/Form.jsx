@@ -27,6 +27,12 @@ export default function Form({ form, setForm, setMessage, setLoading, setSmurl, 
           setMessage(`Oops! That's embarrasing. Something went wrong. Please try again later.`)
         }
       }
+      const handleInputclick = async e => {
+          e.preventDefault()
+          setForm({url:''})
+          setSmurl('')
+          setShowSmurl(false)          
+      }
     return (
     <>
     <form onSubmit={handleSubmit}>
@@ -34,7 +40,8 @@ export default function Form({ form, setForm, setMessage, setLoading, setSmurl, 
               type='text'
               placeholder='Paste your long URL here'
               value={form.url}
-              onChange={e => setForm({ ...form, url: e.target.value })}       
+              onChange={e => setForm({ ...form, url: e.target.value })}      
+              onClick={handleInputclick} 
               required                     
             />
             <button>Send</button>
