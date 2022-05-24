@@ -3,6 +3,6 @@
 A URL Shortener app.
 
 
-Please visit the live app at htt://www.smurl.ca
+Please visit the live app at http://www.smurl.ca
 
 
