@@ -10,7 +10,7 @@ export default function About () {
     >
       <div className='container-main'>
         <section>
-          <h1> Whata is SmURL? </h1>
+          <h1> What's SmURL? </h1>
           <blockquote>
             {' '}
             Small URL or SmURL is a free URL shortener. This is a small project
@@ -18,56 +18,78 @@ export default function About () {
           </blockquote>
         </section>
         <section>
-          <h1> What is a URL shortener?</h1>
+          <h1>About Our URL Shortening Service</h1>
           <blockquote>
-            URL shorteners are a simple but powerful tool that allows web
-            addresses to be condensed into shorter and more manageable links.
-            Understanding the coding behind URL shorteners can help developers
-            create their own custom shorteners and better understand how these
-            tools work.
+            <p>
+              <strong>Simplicity at Its Best:</strong>
+            </p>
+            <p>
+              Our primary goal is to simplify your online experience. We provide
+              you with a straightforward and user-friendly interface to shorten
+              URLs effortlessly.
+            </p>
           </blockquote>
+
           <blockquote>
-            At the core of a URL shortener is a database that maps short links
-            to their corresponding long links. When a user creates a short link,
-            the URL shortener generates a unique code, called a "hash," and
-            stores it in the database along with the corresponding long link.
-            When someone clicks on the short link, the URL shortener looks up
-            the hash in the database and redirects the user to the corresponding
-            long link.
+            <p>
+              <strong>Free and Reliable:</strong>
+            </p>
+            <p>
+              We offer our URL shortening service for free, without any hidden
+              charges or subscriptions. It's a cost-effective solution for
+              personal and business use alike.
+            </p>
           </blockquote>
+
           <blockquote>
-            The process of generating a hash can be done using a variety of
-            algorithms, such as the MD5 or SHA-1 algorithms. These algorithms
-            take a long string of text, such as a long URL, and convert it into
-            a shorter, fixed-length string of characters. The hash is then used
-            as the short link.
+            <p>
+              <strong>Privacy and Security:</strong>
+            </p>
+            <p>
+              Your privacy matters to us. We take data security seriously,
+              ensuring that your shortened links are safe and secure. We don't
+              track or share your data with third parties.
+            </p>
           </blockquote>
+
           <blockquote>
-            The process of redirecting a user from the short link to the long
-            link is done using the HTTP 301 redirect status code. This code
-            tells the user's browser to go to a different URL, which is the long
-            link associated with the short link.
+            <p>
+              <strong>Usage Limits:</strong>
+            </p>
+            <p>
+              While our service is free, we do have certain usage limits in
+              place to ensure fair usage and prevent abuse.
+            </p>
           </blockquote>
+
           <blockquote>
-            To build a URL shortener, a developer would need to set up a
-            database to store the long and short links and create a web page
-            where users can input their long links and get a shortened link
-            back. This web page can be built with a variety of programming
-            languages such as Python, JavaScript, or PHP.
+            <p>
+              <strong>User Support:</strong>
+            </p>
+            <p>
+              We value your feedback and are committed to providing excellent
+              customer support. If you have any questions or encounter issues,
+              our support team is here to assist you promptly.
+            </p>
           </blockquote>
+
           <blockquote>
-            In addition to the basic functionality of creating and redirecting
-            short links, URL shorteners can also include features such as link
-            tracking, custom links, and link expiration. These features can be
-            implemented by adding additional code to track clicks and set
-            expiration dates for links in the database.
+            <p>
+              <strong>Future Enhancements:</strong>
+            </p>
+            <p>
+              We are continuously working to improve our service. Stay tuned for
+              upcoming features and enhancements that will make your URL
+              shortening experience even better.
+            </p>
           </blockquote>
-          <blockquote>
-            In conclusion, the coding behind URL shorteners is relatively simple
-            but powerful. By understanding the basic principles of how these
-            tools work, developers can create their own custom shorteners and
-            add additional features to enhance their functionality.
-          </blockquote>
+
+          <p>
+            Thank you for choosing our URL shortening service. We hope you find
+            it valuable in simplifying your online activities. If you have any
+            suggestions or ideas for improvement, please don't hesitate to reach
+            out. We're here to serve you better.
+          </p>
         </section>
       </div>
     </motion.div>
