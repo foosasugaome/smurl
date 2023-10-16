@@ -45,12 +45,12 @@ export default function About () {
             <Form form={form} setForm={setForm} setMessage={setMessage} setLoading={setLoading} setSmurl={setSmurl} setShowSmurl={setShowSmurl} />
             {loading
           ?
-          <div className='container-field'><h3><LoadingMessages /></h3></div>
+          <div><h3><LoadingMessages /></h3></div>
           :
           null
         }
         {showSmurl ? (
-          <div className='container-field'>
+          <div>
             <CopyURL url={smurl} />
           </div>
         ) : null}
