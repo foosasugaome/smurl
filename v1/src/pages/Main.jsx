@@ -23,9 +23,9 @@ export default function Main () {
         animate={{ opacity: 1 }}
         transition={{ type: 'spring', delay: 0, duration: 1 }}
       >
-        {/* <div className='container-title'>
+        <div className='container-title'>
           <h1 className='title'>Small URL</h1>
-        </div> */}
+        </div>
         <div className='container-field'>          
           <Form form={form} setForm={setForm} setMessage={setMessage} setLoading={setLoading} setSmurl={setSmurl} setShowSmurl={setShowSmurl} />
         </div>

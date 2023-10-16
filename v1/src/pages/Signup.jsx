@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Account from '../components/Account'
 
-export default function Signin () {
+
+export default function Signup() {
   return (
     <motion.div      
       initial={{ opacity: 0 }}
@@ -12,10 +13,10 @@ export default function Signin () {
       transition={{ type: 'spring', delay: 0, duration: 1 }}
     >
         <div>                    
-        <h1>Welcome back!</h1>        
-        <Account actiontype='signin' />
+        <h1>Sign Up!</h1>        
+        <Account actiontype='signup' />
         </div>      
-      <Link to='/signup'>Need an account? Click here. </Link>      
+      <Link to='/signin'>Alread have an account? Click here. </Link>
     </motion.div>
   )
 }

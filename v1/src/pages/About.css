@@ -1,0 +1,46 @@
+.fullscreen-container {
+    /* clip-path: polygon(100% 0, 0 0, 0 100%, 100% 71%); */
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(210, 223, 210);
+    z-index: -1;
+    overflow-y: auto;
+}
+
+.container-main {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+blockquote {
+    line-height: 1.8em;
+    margin: 1.5em 0 1.5em 0;
+}
+.paypal-button{
+    width: 120px;
+    height: 26px;
+    border: 0;
+}
+@media only screen and (max-width: 600px) {
+    .fullscreen-container {
+        padding-bottom: 150px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0);
+}
