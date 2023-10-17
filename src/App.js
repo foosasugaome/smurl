@@ -15,7 +15,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path='/:id' element={<Redirect />} />
-        <Route path='/' element={<Main />} />
+        <Route path='/' element={<About />} />
         <Route path='/about' element={<About />} />       
         <Route path='/sendmecoffeemoney' element={<Paypal />} />
         <Route path='/signup' element={<Signup />} />
