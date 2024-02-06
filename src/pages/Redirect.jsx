@@ -1,53 +1,48 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import LoadingMessages from '../components/LoadingMessages'
-import './Redirect.css'
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+import LoadingMessages from '../components/LoadingMessages';
+import './Redirect.css';
 
-export default function Redirect () {
-  const smurl = useParams()
-  const [isError, setIsError] = useState(false)
-  const [loading, setLoading] = useState(true)
+const Redirect = () => {
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  console.log = console.warn = console.error = () => {}
-
-  document.title = 'SmURL service redirecting ...'
   useEffect(() => {
-    ;(async () => {
-      setLoading(true)
-      let cancel
+    document.title = 'SmURL service redirecting ...';
+    const fetchData = async () => {
+      setLoading(true);
       try {
-        const response = await axios({
-          method: 'GET',
-          url: `${process.env.REACT_APP_SERVER_URL}/${smurl.id}`,
-          cancelToken: new axios.CancelToken(c => (cancel = c))
-        })        
-        setLoading(false)
-        window.location.href = response.data.data[0].url
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          setLoading(false)
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/${id}`);
+        if (response.data.data.length > 0) {
+          window.location.href = response.data.data[0].url;
+        } else {
+          setError(true);
         }
-        setIsError(true)
-        setLoading(false)        
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
       }
-      return () => cancel()
-    })()
-  }, [smurl.id])
+    };
+
+    fetchData();
+
+    return () => {}; // Cleanup function
+
+  }, [id]);
+
   return (
-    <>
-      <div className='container'>
-        {loading ? (
-          <h1>
-            <LoadingMessages />
-          </h1>
-        ) : null}
-        {isError ? (
-          <h1>
-            Your SmURL was not found. Create a new one <Link to='/'>here</Link>.
-          </h1>
-        ) : null}
-      </div>
-    </>
-  )
-}
+    <div className='container'>
+      {loading && <h1><LoadingMessages /></h1>}
+      {error && (
+        <h1>
+          Your SmURL was not found. Create a new one <Link to='/'>here</Link>.
+        </h1>
+      )}
+    </div>
+  );
+};
+
+export default Redirect;
