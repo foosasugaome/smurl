@@ -1,54 +1,63 @@
-import axios from 'axios'
+import React, { useState } from 'react';
+import axios from 'axios';
 
-export default function Form({ form, setForm, setMessage, setLoading, setSmurl, setShowSmurl }) {
-    const handleSubmit = async e => {
-        e.preventDefault()
-        setMessage('')
-        
-        var URL = form.url
-        if(URL.substring(0,8) !== 'https://' && URL.substring(0,7) !== 'http://') {
-          // TODO : will returning https be enough do the thing?
-          form.url= `https://${form.url}`
-          // if(URL.substring(0,8) == 'https://') {
-          //   form.url = 'https://'
-          // }
-        }
-    
-        try {
-          setLoading(true)
-          const response = await axios.post(
-            `${process.env.REACT_APP_SERVER_URL}/api/v1`,
-            form
-          )
-          const smurl = response.data
-          setSmurl(`${process.env.REACT_APP_DOMAIN}/${smurl.url}`)
-          setLoading(false)
-          setShowSmurl(true)      
-        } catch (error) {
-          setLoading(false)
-          setShowSmurl(false)
-          setMessage(`Oops! That's embarrasing. Something went wrong. Please try again later.`)
-        }
-      }
-      const handleInputclick = async e => {
-          e.preventDefault()
-          setForm({url:''})
-          setSmurl('')
-          setShowSmurl(false)          
-      }
-    return (
-    <>
+const Form = ({ setMessage, setLoading, setSmurl, setShowSmurl }) => {
+  const [url, setUrl] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage('');
+    setLoading(true);
+
+    try {
+      const normalizedUrl = normalizeUrl(url);
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/api/v1`,
+        { url: normalizedUrl }
+      );
+      const smurl = response.data;
+      setSmurl(`${process.env.REACT_APP_DOMAIN}/${smurl.url}`);
+      setLoading(false);
+      setShowSmurl(true);
+    } catch (error) {
+      setLoading(false);
+      setShowSmurl(false);
+      setMessage(`Oops! That's embarrassing. Something went wrong. Please try again later.`);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setUrl(e.target.value);
+  };
+
+  const handleInputClick = () => {
+    setUrl('');
+    setSmurl('');
+    setShowSmurl(false);
+  };
+
+  const normalizeUrl = (inputUrl) => {
+    const trimmedUrl = inputUrl.trim();
+    if (trimmedUrl.startsWith('http://') || trimmedUrl.startsWith('https://')) {
+      return trimmedUrl;
+    } else {
+      return `https://${trimmedUrl}`;
+    }
+  };
+
+  return (
     <form onSubmit={handleSubmit}>
-            <input
-              type='text'
-              placeholder='Paste your long URL here'
-              value={form.url}
-              onChange={e => setForm({ ...form, url: e.target.value })}      
-              onClick={handleInputclick} 
-              required                     
-            />
-            <button>Send</button>
+      <input
+        type='text'
+        placeholder='Paste your long URL here'
+        value={url}
+        onChange={handleInputChange}
+        onClick={handleInputClick}
+        required
+      />
+      <button>Send</button>
     </form>
-    </>
-  )
-}
+  );
+};
+
+export default Form;
