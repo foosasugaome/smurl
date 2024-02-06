@@ -7,7 +7,11 @@ export default function Form({ form, setForm, setMessage, setLoading, setSmurl, 
         
         var URL = form.url
         if(URL.substring(0,8) !== 'https://' && URL.substring(0,7) !== 'http://') {
-          form.url= `http://${form.url}`
+          // TODO : will returning https be enough do the thing?
+          form.url= `https://${form.url}`
+          // if(URL.substring(0,8) == 'https://') {
+          //   form.url = 'https://'
+          // }
         }
     
         try {
