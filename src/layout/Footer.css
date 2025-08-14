@@ -1,0 +1,24 @@
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #F9FAFB;
+    border-top: 1px solid #E5E7EB;
+  }
+
+  .github-link {
+    display: flex;
+    align-items: center;
+    color: #4B5563;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .github-link:hover {
+    color: #1F2937;
+  }
+
+  .github-icon {
+    margin-right: 0.5rem;
+  }

@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import CopyURL from '../components/CopyURL'
-import { motion } from 'framer-motion'
-import './Main.css'
-import LoadingMessages from '../components/LoadingMessages'
-import Form from '../components/Form'
+import React, { useState } from 'react';
+import CopyURL from '../components/CopyURL';
+import { motion } from 'framer-motion';
+import './Main.css';
+import LoadingMessages from '../components/LoadingMessages';
+import Form from '../components/Form';
+import useUrlShortener from '../hooks/useUrlShortener';
 
-export default function Main () {
-  const [form, setForm] = useState({
-    url: ''
-  })  
+export default function Main() {
+  const [url, setUrl] = useState('');
+  const { smurl, message, loading, showSmurl, shortenUrl } = useUrlShortener();
 
-  const [smurl, setSmurl] = useState('')
-  const [message, setMessage] = useState('')
-  const [showSmurl, setShowSmurl] = useState(false)
-  const [loading, setLoading] = useState(false)  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await shortenUrl(url);
+  };
 
   return (
     <>
@@ -23,27 +23,33 @@ export default function Main () {
         animate={{ opacity: 1 }}
         transition={{ type: 'spring', delay: 0, duration: 1 }}
       >
-        {/* <div className='container-title'>
-          <h1 className='title'>Small URL</h1>
-        </div> */}
-        <div className='container-field'>          
-          <Form form={form} setForm={setForm} setMessage={setMessage} setLoading={setLoading} setSmurl={setSmurl} setShowSmurl={setShowSmurl} />
+        <div className='container-title'>
+          <h1 className='title'>SmURL</h1>
+          <h2 className='subtitle'>The simplest URL shortener.</h2>
+        </div>
+        <div className='container-field'>
+          <Form
+            url={url}
+            setUrl={setUrl}
+            handleSubmit={handleSubmit}
+          />
         </div>
         <div className='container-field'>
           <h2>{message}</h2>
-        </div>                
-        {loading
-          ?
-          <div className='container-field'><h3><LoadingMessages /></h3></div>
-          :
-          null
-        }
-        {showSmurl ? (
+        </div>
+        {loading && (
+          <div className='container-field'>
+            <h3>
+              <LoadingMessages />
+            </h3>
+          </div>
+        )}
+        {showSmurl && (
           <div className='container-field'>
             <CopyURL url={smurl} />
           </div>
-        ) : null}
+        )}
       </motion.div>
     </>
-  )
+  );
 }

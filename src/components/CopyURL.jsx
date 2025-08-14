@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { FiCopy } from 'react-icons/fi';
+import './CopyURL.css';
 
 export default function CopyURL({ url }) {
-
     const [isCopied, setIsCopied] = useState(false);
     
     async function copyTextToClipboard(text) {
@@ -12,12 +13,9 @@ export default function CopyURL({ url }) {
       }
     }
   
-    // onClick handler function for the copy button
     const handleCopyClick = () => {
-      // Asynchronously call copyTextToClipboard
       copyTextToClipboard(url)
         .then(() => {
-          // If successful, update the isCopied state value
           setIsCopied(true);
           setTimeout(() => {
             setIsCopied(false);
@@ -29,10 +27,10 @@ export default function CopyURL({ url }) {
     }
   
     return (
-      <div>
-        <input type="text" value={url} readOnly />
-        {/* Bind our handler function to the onClick button property */}
-        <button onClick={handleCopyClick}>
+      <div className="copy-container">
+        <input type="text" value={url} readOnly className="url-output" />
+        <button onClick={handleCopyClick} className="copy-button">
+          <FiCopy className="copy-icon" />
           <span>{isCopied ? 'Copied!' : 'Copy'}</span>
         </button>
       </div>
