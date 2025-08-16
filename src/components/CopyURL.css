@@ -1,0 +1,36 @@
+.copy-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .url-output {
+    flex-grow: 1;
+    padding: 1rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    border: 1px solid #D1D5DB;
+    font-size: 1rem;
+    background-color: #F9FAFB;
+  }
+
+  .copy-button {
+    display: flex;
+    align-items: center;
+    background-color: #3B82F6;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .copy-button:hover {
+    background-color: #2563EB;
+  }
+
+  .copy-icon {
+    margin-right: 0.5rem;
+  }
